@@ -1,0 +1,14 @@
+{
+	"name": "Category Breadcrumb",
+	"author": "Pierre Rudloff",
+	"url": "https://github.com/Archi-Strasbourg/mediawiki-archi-footer",
+	"description": "Custom page footer for archi-wiki.org",
+	"Hooks": {
+		"SkinAfterContent": [
+			"ArchiFooter\\ArchiFooter::main"
+		]
+	},
+	"AutoloadClasses": {
+		"ArchiFooter\\ArchiFooter": "ArchiFooter.php"
+	}
+}
