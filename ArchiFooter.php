@@ -15,4 +15,10 @@ class ArchiFooter
             $data = $output->getText();
         }
     }
+
+    public static function addScripts(&$parser)
+    {
+        global $wgOut;
+        $wgOut->addModules('ext.comments.js');
+    }
 }

@@ -6,6 +6,9 @@
 	"Hooks": {
 		"SkinAfterContent": [
 			"ArchiFooter\\ArchiFooter::main"
+		],
+		"ParserFirstCallInit": [
+			"ArchiFooter\\ArchiFooter::addScripts"
 		]
 	},
 	"AutoloadClasses": {
