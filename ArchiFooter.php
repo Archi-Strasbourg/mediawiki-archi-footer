@@ -27,6 +27,7 @@ class ArchiFooter
             $props = array();
             foreach ($results['query']['data'] as $data) {
                 if (isset($data['property'])) {
+                    $data['dataitem'][0]['item'] = preg_replace('/#[0-9]+#/', '', $data['dataitem'][0]['item']);
                     switch ($data['property']) {
                         case 'Rue':
                             $props['street'] = $data['dataitem'][0]['item'];
