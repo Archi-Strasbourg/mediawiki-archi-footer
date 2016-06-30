@@ -28,9 +28,13 @@ class ArchiFooter
             foreach ($results['query']['data'] as $data) {
                 if (isset($data['property'])) {
                     $data['dataitem'][0]['item'] = preg_replace('/#[0-9]+#/', '', $data['dataitem'][0]['item']);
+                    $data['dataitem'][0]['item'] = str_replace('_', ' ', $data['dataitem'][0]['item']);
                     switch ($data['property']) {
                         case 'Rue':
                             $props['street'] = $data['dataitem'][0]['item'];
+                            break;
+                        case 'Complément_Rue':
+                            $props['street_prefix'] = $data['dataitem'][0]['item'];
                             break;
                         case 'Numéro':
                             $props['number'] = $data['dataitem'][0]['item'];
@@ -43,6 +47,11 @@ class ArchiFooter
 <div class="noexcerpt">
 {{#ask:
 [[Rue::'.$props['street'].']]
+';
+if (isset($props['street_prefix'])) {
+    $text .= '[[Complément_Rue::'.$props['street_prefix'].']]';
+}
+$text .= '
 [[Numéro::<<'.$props['number'].']]
 |limit=1
 |sort=Numéro
