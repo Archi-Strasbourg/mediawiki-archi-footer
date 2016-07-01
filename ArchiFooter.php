@@ -48,10 +48,10 @@ class ArchiFooter
 {{#ask:
 [[Rue::'.$props['street'].']]
 ';
-if (isset($props['street_prefix'])) {
-    $text .= '[[Complément_Rue::'.$props['street_prefix'].']]';
-}
-$text .= '
+                if (isset($props['street_prefix'])) {
+                    $text .= '[[Complément_Rue::'.$props['street_prefix'].']]';
+                }
+                $text .= '
 [[Numéro::<<'.$props['number'].']]
 |limit=1
 |sort=Numéro
