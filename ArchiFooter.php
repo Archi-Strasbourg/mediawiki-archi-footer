@@ -7,7 +7,7 @@ class ArchiFooter
     {
         global $wgUser, $wgParser;
         $title = $skin->getTitle();
-        if ($title->getNamespace() == NS_ADDRESS) {
+        if (in_array($title->getNamespace(), array(NS_ADDRESS, NS_PERSON))) {
             //Edit button
             $text = '['.$title->getFullURL(array('veaction'=>'edit')).' Contribuez aussi à cet article]';
             $output = $wgParser->parse($text, $title, new \ParserOptions($wgUser));
