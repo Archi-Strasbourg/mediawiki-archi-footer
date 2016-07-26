@@ -39,14 +39,20 @@ class ArchiFooter
                         case 'Numéro':
                             $props['number'] = $data['dataitem'][0]['item'];
                             break;
+                        case 'Adresse_complète':
+                            $props['address'] = $data['dataitem'][0]['item'];
+                            break;
                     }
                 }
             }
             if (isset($props['street']) && isset($props['number'])) {
                 $text = '
 <div class="noexcerpt">
-{{#ask:
-[[Rue::'.$props['street'].']]
+{{#ask:';
+                if (isset($props['address'])) {
+                    $text .= '[[Adresse complète::!'.$props['address'].']]';
+                }
+                $text .= '[[Rue::'.$props['street'].']]
 ';
                 if (isset($props['street_prefix'])) {
                     $text .= '[[Complément_Rue::'.$props['street_prefix'].']]';
@@ -60,8 +66,11 @@ class ArchiFooter
 |intro=<&nbsp;
 }}
 
-{{#ask:
-[[Rue::'.$props['street'].']]
+{{#ask:';
+                if (isset($props['address'])) {
+                    $text .= '[[Adresse complète::!'.$props['address'].']]';
+                }
+                $text .= '[[Rue::'.$props['street'].']]
 [[Numéro::>>'.$props['number'].']]
 |limit=1
 |sort=Numéro
