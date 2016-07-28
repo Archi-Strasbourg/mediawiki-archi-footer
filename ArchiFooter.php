@@ -46,39 +46,35 @@ class ArchiFooter
                 }
             }
             if (isset($props['street']) && isset($props['number'])) {
-                $text = '
-<div class="noexcerpt">
-{{#ask:';
+                $text = '<div class="noexcerpt">'.PHP_EOL.
+                '{{#ask:';
                 if (isset($props['address'])) {
                     $text .= '[[Adresse complète::!'.$props['address'].']]';
                 }
-                $text .= '[[Rue::'.$props['street'].']]
-';
+                $text .= '[[Rue::'.$props['street'].']]';
                 if (isset($props['street_prefix'])) {
                     $text .= '[[Complément_Rue::'.$props['street_prefix'].']]';
                 }
-                $text .= '
-[[Numéro::<<'.$props['number'].']]
-|limit=1
-|sort=Numéro
-|order=desc
-|searchlabel=
-|intro=<&nbsp;
-}}
-
-{{#ask:';
+                $text .= '[[Numéro::<<'.$props['number'].']]
+                |limit=1
+                |sort=Numéro
+                |order=desc
+                |searchlabel=
+                |intro=<&nbsp;
+                }}'.PHP_EOL.PHP_EOL.
+                '{{#ask:';
                 if (isset($props['address'])) {
                     $text .= '[[Adresse complète::!'.$props['address'].']]';
                 }
                 $text .= '[[Rue::'.$props['street'].']]
-[[Numéro::>>'.$props['number'].']]
-|limit=1
-|sort=Numéro
-|order=asc
-|searchlabel=
-|outro=&nbsp;>
-}}
-</div>
+                [[Numéro::>>'.$props['number'].']]
+                |limit=1
+                |sort=Numéro
+                |order=asc
+                |searchlabel=
+                |outro=&nbsp;>
+                }}
+                </div>
                 ';
                 $output = $wgParser->parse($text, $title, new \ParserOptions($wgUser));
                 $return .= $output->getText();
