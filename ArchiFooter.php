@@ -66,6 +66,9 @@ class ArchiFooter
                 if (isset($props['address'])) {
                     $text .= '[[Adresse complète::!'.$props['address'].']]';
                 }
+                if (isset($props['street_prefix'])) {
+                    $text .= '[[Complément_Rue::'.$props['street_prefix'].']]';
+                }
                 $text .= '[[Rue::'.$props['street'].']]
                 [[Numéro::>>'.$props['number'].']]
                 |limit=1
