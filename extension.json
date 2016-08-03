@@ -1,7 +1,8 @@
 {
-	"name": "Category Breadcrumb",
+	"name": "ArchiFooter",
 	"author": "Pierre Rudloff",
 	"url": "https://github.com/Archi-Strasbourg/mediawiki-archi-footer",
+	"license-name": "GPL-3.0",
 	"description": "Custom page footer for archi-wiki.org",
 	"Hooks": {
 		"SkinAfterContent": [
