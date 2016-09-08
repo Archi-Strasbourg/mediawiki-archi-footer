@@ -1,4 +1,5 @@
 <?php
+
 namespace ArchiFooter;
 
 class ArchiFooter
@@ -7,24 +8,24 @@ class ArchiFooter
     {
         global $wgUser, $wgParser;
         $title = $skin->getTitle();
-        if (in_array($title->getNamespace(), array(NS_ADDRESS, NS_PERSON))) {
+        if (in_array($title->getNamespace(), [NS_ADDRESS, NS_PERSON])) {
             //Edit button
-            $text = '['.$title->getFullURL(array('veaction'=>'edit')).' Contribuez aussi à cet article]';
+            $text = '['.$title->getFullURL(['veaction' => 'edit']).' Contribuez aussi à cet article]';
             $output = $wgParser->parse($text, $title, new \ParserOptions($wgUser));
             $return .= $output->getText();
 
             //Nearby addresses
             $params = new \DerivativeRequest(
                 $skin->getRequest(),
-                array(
-                    'action'=>'browsebysubject',
-                    'subject'=>$title->getFullText()
-                )
+                [
+                    'action'  => 'browsebysubject',
+                    'subject' => $title->getFullText(),
+                ]
             );
             $api = new \ApiMain($params);
             $api->execute();
             $results = $api->getResult()->getResultData();
-            $props = array();
+            $props = [];
             foreach ($results['query']['data'] as $data) {
                 if (isset($data['property'])) {
                     $data['dataitem'][0]['item'] = preg_replace('/#[0-9]+#/', '', $data['dataitem'][0]['item']);
