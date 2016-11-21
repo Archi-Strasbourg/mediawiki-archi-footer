@@ -13,7 +13,7 @@ class ArchiFooter
             //Edit button
             $return .= '<p>'.\Html::rawElement(
                 'a',
-                ['href'=>$title->getFullURL(['veaction' => 'edit'])],
+                ['href' => $title->getFullURL(['veaction' => 'edit'])],
                 'Contribuez aussi à cet article'
             ).'</p>';
 
