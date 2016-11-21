@@ -11,9 +11,11 @@ class ArchiFooter
         $article = new \Article($title);
         if ($article->getID() > 0 && in_array($title->getNamespace(), [NS_ADDRESS, NS_PERSON])) {
             //Edit button
-            $text = '['.$title->getFullURL(['veaction' => 'edit']).' Contribuez aussi à cet article]';
-            $output = $wgParser->parse($text, $title, new \ParserOptions($wgUser));
-            $return .= $output->getText();
+            $return .= '<p>'.\Html::rawElement(
+                'a',
+                ['href'=>$title->getFullURL(['veaction' => 'edit']), 'class'=>'text'],
+                'Contribuez aussi à cet article'
+            ).'</p>';
 
             //Nearby addresses
             $params = new \DerivativeRequest(
