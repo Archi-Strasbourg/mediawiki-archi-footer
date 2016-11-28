@@ -4,7 +4,7 @@
 	"type": "mediawiki-extension",
 	"license": "GPL-3.0",
 	"require": {
-		"mediawiki/Comments": "~1.26.0"
+		"mediawiki/Comments": "~1.26"
 	},
 	"repositories": [{
 		"type": "composer",
