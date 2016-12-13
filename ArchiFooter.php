@@ -1,9 +1,20 @@
 <?php
-
+/**
+ * ArchiFooter class
+ */
 namespace ArchiFooter;
 
+/**
+ * Add elements to the footer of every page
+ */
 class ArchiFooter
 {
+    /**
+     * Add elements to the footer
+     * @param  string $return HTML output
+     * @param  \Skin   $skin   Current skin
+     * @return string HTML
+     */
     public static function main(&$return, \Skin $skin)
     {
         global $wgUser, $wgParser;
@@ -95,7 +106,10 @@ class ArchiFooter
         }
     }
 
-    public static function addScripts(&$parser)
+    /**
+     * Add scripts to <head>
+     */
+    public static function addScripts()
     {
         global $wgOut;
         $wgOut->addModules('ext.comments.js');
