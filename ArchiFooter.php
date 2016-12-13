@@ -1,18 +1,21 @@
 <?php
 /**
- * ArchiFooter class
+ * ArchiFooter class.
  */
+
 namespace ArchiFooter;
 
 /**
- * Add elements to the footer of every page
+ * Add elements to the footer of every page.
  */
 class ArchiFooter
 {
     /**
-     * Add elements to the footer
-     * @param  string $return HTML output
-     * @param  \Skin   $skin   Current skin
+     * Add elements to the footer.
+     *
+     * @param string $return HTML output
+     * @param \Skin  $skin   Current skin
+     *
      * @return string HTML
      */
     public static function main(&$return, \Skin $skin)
@@ -107,7 +110,7 @@ class ArchiFooter
     }
 
     /**
-     * Add scripts to <head>
+     * Add scripts to <head>.
      */
     public static function addScripts()
     {
