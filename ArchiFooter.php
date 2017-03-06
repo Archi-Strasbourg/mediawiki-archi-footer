@@ -28,7 +28,7 @@ class ArchiFooter
             $return .= '<p>'.\Html::rawElement(
                 'a',
                 ['href' => $title->getFullURL(['veaction' => 'edit'])],
-                'Contribuez aussi à cet article'
+                wfMessage('contribute')->parse()
             ).'</p>';
 
             //Nearby addresses
@@ -102,7 +102,7 @@ class ArchiFooter
             }
 
             //Comments
-            $text = '== Commentaires =='.PHP_EOL.
+            $text = '== '.wfMessage('comments')->parse().' =='.PHP_EOL.
                 '<comments />';
             $output = $wgParser->parse($text, $title, new \ParserOptions($wgUser));
             $return .= $output->getText();

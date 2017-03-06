@@ -15,5 +15,10 @@
 	},
 	"AutoloadClasses": {
 		"ArchiFooter\\ArchiFooter": "ArchiFooter.php"
+	},
+	"MessagesDirs": {
+		"ArchiHome": [
+			"i18n"
+		]
 	}
 }
