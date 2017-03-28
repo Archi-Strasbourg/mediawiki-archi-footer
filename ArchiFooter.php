@@ -63,9 +63,9 @@ class ArchiFooter
                     }
                 }
             }
+            $return .= '<div class="noexcerpt">'.PHP_EOL;
             if (isset($props['street']) && isset($props['number'])) {
-                $text = '<div class="noexcerpt">'.PHP_EOL.
-                '{{#ask:';
+                $text = '{{#ask:';
                 if (isset($props['address'])) {
                     $text .= '[[Adresse complète::!'.$props['address'].']]';
                 }
@@ -95,11 +95,11 @@ class ArchiFooter
                 |searchlabel=
                 |outro=&nbsp;>
                 }}
-                </div>
                 ';
                 $output = $wgParser->parse($text, $title, new \ParserOptions($wgUser));
                 $return .= $output->getText();
             }
+            $return .= '</div>';
 
             //Comments
             $text = '== '.wfMessage('comments')->parse().' =='.PHP_EOL.
