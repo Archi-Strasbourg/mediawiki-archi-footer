@@ -10,6 +10,46 @@ namespace ArchiFooter;
  */
 class ArchiFooter
 {
+
+    private static function getProps(\Skin $skin, \Title $title)
+    {
+        $params = new \DerivativeRequest(
+            $skin->getRequest(),
+            [
+                'action'  => 'browsebysubject',
+                'subject' => $title->getFullText(),
+            ]
+        );
+        $api = new \ApiMain($params);
+        $api->execute();
+        $results = $api->getResult()->getResultData();
+        $props = [];
+        foreach ($results['query']['data'] as $data) {
+            if (isset($data['property'])) {
+                $data['dataitem'][0]['item'] = preg_replace('/#[0-9]+#/', '', $data['dataitem'][0]['item']);
+                $data['dataitem'][0]['item'] = str_replace('_', ' ', $data['dataitem'][0]['item']);
+                switch ($data['property']) {
+                    case 'Rue':
+                        $props['street'] = $data['dataitem'][0]['item'];
+                        break;
+                    case 'Complément_Rue':
+                        $props['street_prefix'] = $data['dataitem'][0]['item'];
+                        break;
+                    case 'Numéro':
+                        $props['number'] = $data['dataitem'][0]['item'];
+                        break;
+                    case 'Adresse_complète':
+                        $props['address'] = $data['dataitem'][0]['item'];
+                        break;
+                    case 'Ville':
+                        $props['city'] = $data['dataitem'][0]['item'];
+                        break;
+                }
+            }
+        }
+        return $props;
+    }
+
     /**
      * Add elements to the footer.
      *
@@ -32,40 +72,7 @@ class ArchiFooter
             ).'</p>';
 
             //Nearby addresses
-            $params = new \DerivativeRequest(
-                $skin->getRequest(),
-                [
-                    'action'  => 'browsebysubject',
-                    'subject' => $title->getFullText(),
-                ]
-            );
-            $api = new \ApiMain($params);
-            $api->execute();
-            $results = $api->getResult()->getResultData();
-            $props = [];
-            foreach ($results['query']['data'] as $data) {
-                if (isset($data['property'])) {
-                    $data['dataitem'][0]['item'] = preg_replace('/#[0-9]+#/', '', $data['dataitem'][0]['item']);
-                    $data['dataitem'][0]['item'] = str_replace('_', ' ', $data['dataitem'][0]['item']);
-                    switch ($data['property']) {
-                        case 'Rue':
-                            $props['street'] = $data['dataitem'][0]['item'];
-                            break;
-                        case 'Complément_Rue':
-                            $props['street_prefix'] = $data['dataitem'][0]['item'];
-                            break;
-                        case 'Numéro':
-                            $props['number'] = $data['dataitem'][0]['item'];
-                            break;
-                        case 'Adresse_complète':
-                            $props['address'] = $data['dataitem'][0]['item'];
-                            break;
-                        case 'Ville':
-                            $props['city'] = $data['dataitem'][0]['item'];
-                            break;
-                    }
-                }
-            }
+            $props = self::getProps($skin, $title);
             $return .= '<div class="noexcerpt">'.PHP_EOL;
             if (isset($props['street']) && isset($props['number']) && isset($props['city'])) {
                 $text = '{{#ask:';
