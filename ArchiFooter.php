@@ -60,16 +60,20 @@ class ArchiFooter
                         case 'Adresse_complète':
                             $props['address'] = $data['dataitem'][0]['item'];
                             break;
+                        case 'Ville':
+                            $props['city'] = $data['dataitem'][0]['item'];
+                            break;
                     }
                 }
             }
             $return .= '<div class="noexcerpt">'.PHP_EOL;
-            if (isset($props['street']) && isset($props['number'])) {
+            if (isset($props['street']) && isset($props['number']) && isset($props['city'])) {
                 $text = '{{#ask:';
                 if (isset($props['address'])) {
                     $text .= '[[Adresse complète::!'.$props['address'].']]';
                 }
                 $text .= '[[Rue::'.$props['street'].']]';
+                $text .= '[[Ville::'.$props['city'].']]';
                 if (isset($props['street_prefix'])) {
                     $text .= '[[Complément_Rue::'.$props['street_prefix'].']]';
                 }
