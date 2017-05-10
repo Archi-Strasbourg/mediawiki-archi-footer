@@ -1,25 +1,25 @@
 {
-	"manifest_version": 1,
-	"name": "ArchiFooter",
-	"version": "0.1.0",
-	"author": "Pierre Rudloff",
-	"url": "https://github.com/Archi-Strasbourg/mediawiki-archi-footer",
-	"license-name": "GPL-3.0",
-	"description": "Custom page footer for archi-wiki.org",
-	"Hooks": {
-		"SkinAfterContent": [
-			"ArchiFooter\\ArchiFooter::main"
-		],
-		"ParserFirstCallInit": [
-			"ArchiFooter\\ArchiFooter::addScripts"
-		]
-	},
-	"AutoloadClasses": {
-		"ArchiFooter\\ArchiFooter": "ArchiFooter.php"
-	},
-	"MessagesDirs": {
-		"ArchiHome": [
-			"i18n"
-		]
-	}
+  "manifest_version": 1,
+  "name": "ArchiFooter",
+  "version": "0.1.0",
+  "author": "Pierre Rudloff",
+  "url": "https://github.com/Archi-Strasbourg/mediawiki-archi-footer",
+  "license-name": "GPL-3.0",
+  "description": "Custom page footer for archi-wiki.org",
+  "Hooks": {
+    "SkinAfterContent": [
+      "ArchiFooter\\ArchiFooter::main"
+    ],
+    "ParserFirstCallInit": [
+      "ArchiFooter\\ArchiFooter::addScripts"
+    ]
+  },
+  "AutoloadClasses": {
+    "ArchiFooter\\ArchiFooter": "ArchiFooter.php"
+  },
+  "MessagesDirs": {
+    "ArchiHome": [
+      "i18n"
+    ]
+  }
 }
