@@ -10,7 +10,6 @@ namespace ArchiFooter;
  */
 class ArchiFooter
 {
-
     private static function getProps(\Skin $skin, \Title $title)
     {
         $params = new \DerivativeRequest(
@@ -47,6 +46,7 @@ class ArchiFooter
                 }
             }
         }
+
         return $props;
     }
 
