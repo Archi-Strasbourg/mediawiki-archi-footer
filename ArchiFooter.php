@@ -78,7 +78,7 @@ class ArchiFooter
             $props = self::getProps($skin, $title);
             $return .= '<div class="noexcerpt">'.PHP_EOL;
             if (isset($props['street']) && isset($props['number']) && isset($props['city'])) {
-                $text = '{{#ask:';
+                $text = '<div style="float:left;">{{#ask:';
                 if (isset($props['address'])) {
                     $text .= '[[Adresse complète::!'.$props['address'].']]';
                 }
@@ -94,8 +94,8 @@ class ArchiFooter
                 |order=desc
                 |searchlabel=
                 |intro=<&nbsp;
-                }}'.PHP_EOL.PHP_EOL.
-                '{{#ask:';
+                }}</div>'.PHP_EOL.PHP_EOL.
+                '<div style="float:right;">{{#ask:';
                 if (isset($props['address'])) {
                     $text .= '[[Adresse complète::!'.$props['address'].']]';
                 }
@@ -112,7 +112,7 @@ class ArchiFooter
                 |searchlabel=
                 |outro=&nbsp;>
                 }}
-                ';
+                </div>';
                 $output = $wgParser->parse($text, $title, new \ParserOptions($wgUser));
                 $return .= $output->getText();
             }
