@@ -112,7 +112,7 @@ class ArchiFooter
                 |searchlabel=
                 |outro=&nbsp;>
                 }}
-                </div>';
+                </div>'.PHP_EOL.PHP_EOL;
                 $output = $wgParser->parse($text, $title, new \ParserOptions($wgUser));
                 $return .= $output->getText();
             }
