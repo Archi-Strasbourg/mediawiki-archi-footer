@@ -43,6 +43,9 @@ class ArchiFooter
                     case 'Ville':
                         $props['city'] = $data['dataitem'][0]['item'];
                         break;
+                    case 'Pays':
+                        $props['country'] = $data['dataitem'][0]['item'];
+                        break;
                 }
             }
         }
@@ -81,6 +84,7 @@ class ArchiFooter
                 }
                 $text .= '[[Rue::'.$props['street'].']]';
                 $text .= '[[Ville::'.$props['city'].']]';
+                $text .= '[[Pays::'.$props['country'].']]';
                 if (isset($props['street_prefix'])) {
                     $text .= '[[Complément_Rue::'.$props['street_prefix'].']]';
                 }
@@ -99,6 +103,8 @@ class ArchiFooter
                     $text .= '[[Complément_Rue::'.$props['street_prefix'].']]';
                 }
                 $text .= '[[Rue::'.$props['street'].']]
+                [[Ville::'.$props['city'].']]
+                [[Pays::'.$props['country'].']]
                 [[Numéro::>>'.$props['number'].']]
                 |limit=1
                 |sort=Numéro
