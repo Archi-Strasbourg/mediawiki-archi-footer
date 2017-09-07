@@ -1,14 +1,25 @@
 {
-	"name": "Category Breadcrumb",
-	"author": "Pierre Rudloff",
-	"url": "https://github.com/Archi-Strasbourg/mediawiki-archi-footer",
-	"description": "Custom page footer for archi-wiki.org",
-	"Hooks": {
-		"SkinAfterContent": [
-			"ArchiFooter\\ArchiFooter::main"
-		]
-	},
-	"AutoloadClasses": {
-		"ArchiFooter\\ArchiFooter": "ArchiFooter.php"
-	}
+  "manifest_version": 1,
+  "name": "ArchiFooter",
+  "version": "1.0.0",
+  "author": "Pierre Rudloff",
+  "url": "https://github.com/Archi-Strasbourg/mediawiki-archi-footer",
+  "license-name": "GPL-3.0",
+  "description": "Custom page footer for archi-wiki.org",
+  "Hooks": {
+    "SkinAfterContent": [
+      "ArchiFooter\\ArchiFooter::main"
+    ],
+    "ParserFirstCallInit": [
+      "ArchiFooter\\ArchiFooter::addScripts"
+    ]
+  },
+  "AutoloadClasses": {
+    "ArchiFooter\\ArchiFooter": "ArchiFooter.php"
+  },
+  "MessagesDirs": {
+    "ArchiHome": [
+      "i18n"
+    ]
+  }
 }

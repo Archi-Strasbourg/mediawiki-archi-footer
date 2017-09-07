@@ -1,6 +1,21 @@
 {
-	"name": "archi-strasbourg/archi-footer",
-	"description": "Custom page footer for archi-wiki.org",
-	"type": "mediawiki-extension",
-	"license": "GPL-3.0"
+  "name": "archi-strasbourg/archi-footer",
+  "description": "Custom page footer for archi-wiki.org",
+  "type": "mediawiki-extension",
+  "license": "GPL-3.0",
+  "require": {
+    "mediawiki/Comments": "~1.26"
+  },
+  "require-dev": {
+    "phpdocumentor/phpdocumentor": "~2.9.0"
+  },
+  "scripts": {
+    "doc": "./vendor/bin/phpdoc -f ArchiFooter.php -t docs"
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://mwpackagist.netlib.re/"
+    }
+  ]
 }
