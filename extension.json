@@ -21,5 +21,16 @@
     "ArchiHome": [
       "i18n"
     ]
+  },
+  "ResourceModules": {
+    "ext.archifooter": {
+      "scripts": [
+        "js/comments.js"
+      ]
+    }
+  },
+  "ResourceFileModulePaths": {
+    "localBasePath": "",
+    "remoteExtPath": "ArchiFooter"
   }
 }
