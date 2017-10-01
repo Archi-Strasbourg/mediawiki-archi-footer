@@ -82,30 +82,25 @@ class ArchiFooter
                 if (isset($props['address'])) {
                     $text .= '[[Adresse complète::!'.$props['address'].']]';
                 }
-                $text .= '[[Rue::'.$props['street'].']]';
-                $text .= '[[Ville::'.$props['city'].']]';
-                $text .= '[[Pays::'.$props['country'].']]';
-                if (isset($props['street_prefix'])) {
-                    $text .= '[[Complément_Rue::'.$props['street_prefix'].']]';
-                }
-                $text .= '[[Numéro::<<'.$props['number'].']]
+                $text .= '
+                [['.strtolower($props['street_prefix']).' '.strtolower($props['street']).' numéro::<<'.$props['number'].']]
+                [[Ville::'.$props['city'].']]
+                [[Pays::'.$props['country'].']]
                 |limit=1
                 |sort=Numéro
                 |order=desc
                 |searchlabel=
                 |intro=<&nbsp;
-                }}</div>'.PHP_EOL.PHP_EOL.
-                '<div style="float:right;">{{#ask:';
+                }}</div>'.PHP_EOL.PHP_EOL;
+
+                $text .= '<div style="float:right;">{{#ask:';
                 if (isset($props['address'])) {
                     $text .= '[[Adresse complète::!'.$props['address'].']]';
                 }
-                if (isset($props['street_prefix'])) {
-                    $text .= '[[Complément_Rue::'.$props['street_prefix'].']]';
-                }
-                $text .= '[[Rue::'.$props['street'].']]
+                $text .= '
+                [['.strtolower($props['street_prefix']).' '.strtolower($props['street']).' numéro::>>'.$props['number'].']]
                 [[Ville::'.$props['city'].']]
                 [[Pays::'.$props['country'].']]
-                [[Numéro::>>'.$props['number'].']]
                 |limit=1
                 |sort=Numéro
                 |order=asc
