@@ -83,7 +83,7 @@ class ArchiFooter
                     $text .= '[[Adresse complète::!'.$props['address'].']]';
                 }
                 $text .= '
-                [['.strtolower($props['street_prefix']).' '.strtolower($props['street']).' numéro::<<'.$props['number'].']]
+                [[Numéro de rue::'.strtolower($props['street_prefix']).' '.strtolower($props['street']).'; <<'.$props['number'].']]
                 [[Ville::'.$props['city'].']]
                 [[Pays::'.$props['country'].']]
                 |limit=1
@@ -98,7 +98,7 @@ class ArchiFooter
                     $text .= '[[Adresse complète::!'.$props['address'].']]';
                 }
                 $text .= '
-                [['.strtolower($props['street_prefix']).' '.strtolower($props['street']).' numéro::>>'.$props['number'].']]
+                [[Numéro de rue::'.strtolower($props['street_prefix']).' '.strtolower($props['street']).'; >>'.$props['number'].']]
                 [[Ville::'.$props['city'].']]
                 [[Pays::'.$props['country'].']]
                 |limit=1
