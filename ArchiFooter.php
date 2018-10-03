@@ -12,6 +12,10 @@ class ArchiFooter
 {
     private static function getProps(\Skin $skin, \Title $title)
     {
+        // Don't try to get properties for a redirect as it can cause a crash if it is a circular redirect.
+        if ($title->isRedirect()) {
+            return [];
+        }
         $params = new \DerivativeRequest(
             $skin->getRequest(),
             [
