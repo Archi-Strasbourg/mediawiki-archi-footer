@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "96c488df5df85fc8caf15e61d5c956c0",
+    "content-hash": "1bae75236d9c3bff6e49866ee7d76805",
     "packages": [
         {
             "name": "composer/installers",
@@ -130,9 +130,7 @@
             },
             "dist": {
                 "type": "tar",
-                "url": "https://extdist.wmflabs.org/dist/extensions/Comments-REL1_28-6db68ed.tar.gz",
-                "reference": null,
-                "shasum": null
+                "url": "https://extdist.wmflabs.org/dist/extensions/Comments-REL1_28-6db68ed.tar.gz"
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -295,6 +293,7 @@
             ],
             "description": "Promoting the interoperability of container objects (DIC, SL, etc.)",
             "homepage": "https://github.com/container-interop/container-interop",
+            "abandoned": "psr/container",
             "time": "2017-02-14T19:40:03+00:00"
         },
         {
@@ -1168,12 +1167,12 @@
             "version": "v2.9.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/phpDocumentor/phpDocumentor2.git",
+                "url": "https://github.com/phpDocumentor/phpDocumentor.git",
                 "reference": "be607da0eef9b9249c43c5b4820d25d631c73667"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/phpDocumentor2/zipball/be607da0eef9b9249c43c5b4820d25d631c73667",
+                "url": "https://api.github.com/repos/phpDocumentor/phpDocumentor/zipball/be607da0eef9b9249c43c5b4820d25d631c73667",
                 "reference": "be607da0eef9b9249c43c5b4820d25d631c73667",
                 "shasum": ""
             },
@@ -2351,6 +2350,7 @@
                 "cache",
                 "zf2"
             ],
+            "abandoned": "laminas/laminas-cache",
             "time": "2016-12-16T11:35:47+00:00"
         },
         {
@@ -2407,6 +2407,7 @@
                 "config",
                 "zf2"
             ],
+            "abandoned": "laminas/laminas-config",
             "time": "2016-02-04T23:01:10+00:00"
         },
         {
@@ -2461,6 +2462,7 @@
                 "events",
                 "zf2"
             ],
+            "abandoned": "laminas/laminas-eventmanager",
             "time": "2016-12-19T21:47:12+00:00"
         },
         {
@@ -2521,6 +2523,7 @@
                 "filter",
                 "zf2"
             ],
+            "abandoned": "laminas/laminas-filter",
             "time": "2016-04-18T18:32:43+00:00"
         },
         {
@@ -2579,6 +2582,7 @@
                 "hydrator",
                 "zf2"
             ],
+            "abandoned": "laminas/laminas-hydrator",
             "time": "2016-02-18T22:38:26+00:00"
         },
         {
@@ -2646,6 +2650,7 @@
                 "i18n",
                 "zf2"
             ],
+            "abandoned": "laminas/laminas-i18n",
             "time": "2016-06-07T21:08:30+00:00"
         },
         {
@@ -2696,6 +2701,7 @@
                 "json",
                 "zf2"
             ],
+            "abandoned": "laminas/laminas-json",
             "time": "2016-04-01T02:34:00+00:00"
         },
         {
@@ -2753,6 +2759,7 @@
                 "serializer",
                 "zf2"
             ],
+            "abandoned": "laminas/laminas-serializer",
             "time": "2016-06-21T17:01:55+00:00"
         },
         {
@@ -2805,6 +2812,7 @@
                 "servicemanager",
                 "zf2"
             ],
+            "abandoned": "laminas/laminas-servicemanager",
             "time": "2016-12-19T19:14:29+00:00"
         },
         {
@@ -2864,6 +2872,7 @@
                 "stdlib",
                 "zf2"
             ],
+            "abandoned": "laminas/laminas-stdlib",
             "time": "2016-04-12T21:17:31+00:00"
         },
         {
@@ -2987,5 +2996,6 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "1.1.0"
 }
