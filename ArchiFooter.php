@@ -5,21 +5,35 @@
 
 namespace ArchiFooter;
 
+use ApiMain;
+use Article;
+use DerivativeRequest;
+use Html;
+use MWException;
+use ParserOptions;
+use Skin;
+use Title;
+
 /**
  * Add elements to the footer of every page.
  */
 class ArchiFooter
 {
-    private static function getProps(\Skin $skin, \Title $title)
+    /**
+     * @param Skin $skin
+     * @param Title $title
+     * @return array
+     */
+    private static function getProps(Skin $skin, Title $title)
     {
-        $params = new \DerivativeRequest(
+        $params = new DerivativeRequest(
             $skin->getRequest(),
             [
                 'action'  => 'browsebysubject',
                 'subject' => $title->getFullText(),
             ]
         );
-        $api = new \ApiMain($params);
+        $api = new ApiMain($params);
         $api->execute();
         $results = $api->getResult()->getResultData();
         $props = [];
@@ -57,18 +71,19 @@ class ArchiFooter
      * Add elements to the footer.
      *
      * @param string $return HTML output
-     * @param \Skin  $skin   Current skin
+     * @param Skin $skin Current skin
      *
      * @return string HTML
+     * @throws MWException
      */
-    public static function main(&$return, \Skin $skin)
+    public static function main(&$return, Skin $skin)
     {
         global $wgUser, $wgParser;
         $title = $skin->getTitle();
-        $article = new \Article($title);
+        $article = new Article($title);
         if ($article->getID() > 0 && in_array($title->getNamespace(), [NS_ADDRESS, NS_ADDRESS_NEWS, NS_PERSON])) {
             //Edit button
-            $return .= '<p>'.\Html::rawElement(
+            $return .= '<p>'. Html::rawElement(
                 'a',
                 ['href' => $title->getFullURL(['veaction' => 'edit'])],
                 wfMessage('contribute')->parse()
@@ -124,7 +139,7 @@ class ArchiFooter
                 |outro=&nbsp;>
                 }}
                 </div>'.PHP_EOL.PHP_EOL;
-                $output = $wgParser->parse($text, $title, new \ParserOptions($wgUser));
+                $output = $wgParser->parse($text, $title, new ParserOptions($wgUser));
                 $return .= $output->getText();
             }
             $return .= '</div>';
@@ -132,9 +147,11 @@ class ArchiFooter
             //Comments
             $text = '== '.wfMessage('comments')->parse().' =='.PHP_EOL.
                 '<comments />';
-            $output = $wgParser->parse($text, $title, new \ParserOptions($wgUser));
+            $output = $wgParser->parse($text, $title, new ParserOptions($wgUser));
             $return .= $output->getText();
         }
+
+        return '';
     }
 
     /**
