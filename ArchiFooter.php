@@ -80,7 +80,7 @@ class ArchiFooter
         global $wgUser, $wgParser;
         $title = $skin->getTitle();
         $article = new Article($title);
-        if ($article->getID() > 0 && in_array($title->getNamespace(), [NS_ADDRESS, NS_ADDRESS_NEWS, NS_PERSON])) {
+        if ($article->getPage()->getId() > 0 && in_array($title->getNamespace(), [NS_ADDRESS, NS_ADDRESS_NEWS, NS_PERSON])) {
             //Edit button
             $return .= '<p>'. Html::rawElement(
                 'a',
