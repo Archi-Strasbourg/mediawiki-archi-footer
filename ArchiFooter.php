@@ -96,39 +96,37 @@ class ArchiFooter
                 if (isset($props['address'])) {
                     $text .= '[[Adresse complète::!'.$props['address'].']]';
                 }
-                $text .= '
-                [[Numéro de rue::'.strtolower($props['street_prefix']).' '.
-                    strtolower(
+
+                $streetNumber = '';
+                if (isset($props['street_prefix'])) {
+                    $streetNumber .= strtolower($props['street_prefix']) . ' ';
+                }
+                $streetNumber .= strtolower(
                         str_replace(
-                            '('.$props['city'].')',
+                            '(' . $props['city'] . ')',
                             '',
                             $props['street']
                         )
-                    ).
-                    '; <<'.$props['number'].']]
-                [[Ville::'.$props['city'].']]
-                [[Pays::'.$props['country'].']]
+                    ) .
+                    '; <<' . $props['number'];
+
+                $text .= '
+                [[Numéro de rue::' . $streetNumber . ']]
+                [[Ville::' . $props['city'] . ']]
+                [[Pays::' . $props['country'] . ']]
                 |limit=1
                 |sort=Numéro
                 |order=desc
                 |searchlabel=
                 |intro=<&nbsp;
-                }}</div>'.PHP_EOL.PHP_EOL;
+                }}</div>' . PHP_EOL . PHP_EOL;
 
                 $text .= '<div style="float:right;">{{#ask:';
                 if (isset($props['address'])) {
                     $text .= '[[Adresse complète::!'.$props['address'].']]';
                 }
                 $text .= '
-                [[Numéro de rue::'.strtolower($props['street_prefix']).' '.
-                    strtolower(
-                        str_replace(
-                            '('.$props['city'].')',
-                            '',
-                            $props['street']
-                        )
-                    ).
-                    '; >>'.$props['number'].']]
+                [[Numéro de rue::' . $streetNumber . ']]
                 [[Ville::'.$props['city'].']]
                 [[Pays::'.$props['country'].']]
                 |limit=1
