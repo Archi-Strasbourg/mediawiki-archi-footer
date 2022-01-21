@@ -38,7 +38,7 @@ class ArchiFooter
         $results = $api->getResult()->getResultData();
         $props = [];
         foreach ($results['query']['data'] as $data) {
-            if (isset($data['property'])) {
+            if (isset($data['property']) && isset($data['dataitem'][0])) {
                 $data['dataitem'][0]['item'] = preg_replace('/#[0-9]+##/', '', $data['dataitem'][0]['item']);
                 $data['dataitem'][0]['item'] = str_replace('_', ' ', $data['dataitem'][0]['item']);
                 switch ($data['property']) {
