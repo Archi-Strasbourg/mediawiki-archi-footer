@@ -9,8 +9,10 @@ use ApiMain;
 use Article;
 use DerivativeRequest;
 use Html;
+use MediaWiki\MediaWikiServices;
 use MWException;
 use ParserOptions;
+use RequestContext;
 use Skin;
 use Title;
 
@@ -77,7 +79,8 @@ class ArchiFooter
      */
     public static function main(string &$return, Skin $skin)
     {
-        global $wgUser, $wgParser;
+        $user = RequestContext::getMain()->getUser();
+        $parser = MediaWikiServices::getInstance()->getParser();
         $title = $skin->getTitle();
         $article = new Article($title);
         if ($article->getPage()->getId() > 0 && in_array($title->getNamespace(), [NS_ADDRESS, NS_ADDRESS_NEWS, NS_PERSON])) {
@@ -136,7 +139,7 @@ class ArchiFooter
                 |outro=&nbsp;>
                 }}
                 </div>'.PHP_EOL.PHP_EOL;
-                $output = $wgParser->parse($text, $title, new ParserOptions($wgUser));
+                $output = $parser->parse($text, $title, new ParserOptions($user));
                 $return .= $output->getText();
             }
             $return .= '</div>';
@@ -144,7 +147,7 @@ class ArchiFooter
             //Comments
             $text = '== '.wfMessage('comments')->parse().' =='.PHP_EOL.
                 '<comments />';
-            $output = $wgParser->parse($text, $title, new ParserOptions($wgUser));
+            $output = $parser->parse($text, $title, new ParserOptions($user));
             $return .= $output->getText();
         }
     }
