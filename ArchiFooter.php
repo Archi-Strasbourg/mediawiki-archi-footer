@@ -82,7 +82,7 @@ class ArchiFooter
         $user = RequestContext::getMain()->getUser();
         $parser = MediaWikiServices::getInstance()->getParser();
         $title = $skin->getTitle();
-        if ($title->canExist() && in_array($title->getNamespace(), [NS_ADDRESS, NS_ADDRESS_NEWS, NS_PERSON])) {
+        if ($title->isKnown() && in_array($title->getNamespace(), [NS_ADDRESS, NS_ADDRESS_NEWS, NS_PERSON])) {
             //Edit button
             $return .= '<p>'. Html::rawElement(
                 'a',
