@@ -1,0 +1,19 @@
+.oo-ui-toolbar + textarea#comment {
+  margin-top: 0 !important;
+}
+.af-autocomplete__wrapper {
+  overflow: visible;
+  position: relative;
+}
+.oo-ui-window-content {
+  overflow: visible;
+}
+.oo-ui-dialog-content > .oo-ui-window-body {
+  overflow: unset;
+}
+.oo-ui-dialog-content > .oo-ui-window-foot {
+  z-index: 1;
+}
+input#af-autocomplete {
+  margin-bottom: 0;
+}

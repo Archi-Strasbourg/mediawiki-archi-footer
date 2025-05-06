@@ -27,6 +27,23 @@
       "scripts": [
         "js/comments.js"
       ]
+    },
+    "ext.afCommentTools": {
+      "packageFiles": [
+        "js/af.CommentTools.js",
+        "js/AutoCompleteDialog.js"
+      ],
+      "dependencies": [
+        "oojs-ui-toolbars",
+        "oojs-ui.styles.icons-user",
+        "ext.afjquery.autocomplete"
+      ],
+      "styles": "css/af.CommentTools.css"
+    },
+    "ext.afjquery.autocomplete": {
+      "scripts": [
+        "js/jquery/jquery.autocomplete.js"
+      ]
     }
   },
   "ResourceFileModulePaths": {

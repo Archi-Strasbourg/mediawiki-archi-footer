@@ -159,5 +159,6 @@ class ArchiFooter
         global $wgOut;
         $wgOut->addModules('ext.comments.js');
         $wgOut->addModules('ext.archifooter');
+        $wgOut->addModules('ext.afCommentTools');
     }
 }
