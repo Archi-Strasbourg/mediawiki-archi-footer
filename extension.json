@@ -31,11 +31,13 @@
     "ext.afCommentTools": {
       "packageFiles": [
         "js/af.CommentTools.js",
-        "js/AutoCompleteDialog.js"
+        "js/AutoCompleteDialog.js",
+        "js/InsertLinkDialog.js"
       ],
       "dependencies": [
         "oojs-ui-toolbars",
         "oojs-ui.styles.icons-user",
+        "oojs-ui.styles.icons-editing-core",
         "ext.afjquery.autocomplete"
       ],
       "styles": "css/af.CommentTools.css"

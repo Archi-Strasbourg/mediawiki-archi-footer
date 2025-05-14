@@ -3,6 +3,7 @@
 (function () {
   'use strict';
   require('./AutoCompleteDialog.js');
+  require('./InsertLinkDialog.js');
 
   function handleReply(evt) {
     const commentID = evt.currentTarget.getAttribute('data-comment-id');
@@ -28,12 +29,10 @@
       AutoCompleteTool.super.apply(this, arguments);
     }
     OO.inheritClass(AutoCompleteTool, OO.ui.Tool);
-
     AutoCompleteTool.static.name = 'autocomplete';
-    AutoCompleteTool.static.icon = 'userGroup';
+    AutoCompleteTool.static.icon = 'userAdd';
     AutoCompleteTool.static.title = 'Mentionner';
     AutoCompleteTool.static.autoAddToCatchall = false;
-
     AutoCompleteTool.prototype.onSelect = function() {
       OO.ui.getWindowManager().openWindow('afautocomplete', {size: 'small'});
 
@@ -41,12 +40,28 @@
     };
     AutoCompleteTool.prototype.onUpdateState = function () {};
 
+    function InsertLinkTool() {
+      InsertLinkTool.super.apply(this, arguments);
+    }
+    OO.inheritClass(InsertLinkTool, OO.ui.Tool);
+    InsertLinkTool.static.name = 'insertlink';
+    InsertLinkTool.static.icon = 'link';
+    InsertLinkTool.static.title = 'Ajouter un lien';
+    InsertLinkTool.static.autoAddToCatchall = false;
+    InsertLinkTool.prototype.onSelect = function() {
+      OO.ui.getWindowManager().openWindow('afinsertlink', {size: 'small'});
+
+      this.setActive(false);
+    };
+    InsertLinkTool.prototype.onUpdateState = function () {};
+
     toolFactory.register(AutoCompleteTool);
+    toolFactory.register(InsertLinkTool);
 
     toolbar.setup([
       {
         type: 'bar',
-        include: ['autocomplete']
+        include: ['autocomplete', 'insertlink']
       }
     ]);
     const formElement = document.querySelector('form[name="commentForm"]');

@@ -61,17 +61,20 @@ AutoCompleteDialog.prototype.getActionProcess = function (action) {
           commentTextarea.value += `@[[Utilisateur:${value}|${value}]] `;
           commentTextarea.focus();
           valueInput.setAttribute('value', '');
-          $( '#af-autocomplete' ).autocomplete('clear');
         }
       }
+      document.getElementById('af-autocomplete').value = '';
 
       this.close({
         action: action
       });
     });
   } else if (action === 'cancel') {
-    $( '#af-autocomplete' ).autocomplete('clear');
-    this.close();
+    return new OO.ui.Process(() => {
+      document.getElementById('af-autocomplete').value = '';
+      $( '#af-autocomplete' ).autocomplete('clear');
+      this.close();
+    });
   }
   return AutoCompleteDialog.super.prototype.getActionProcess.call(this, action);
 };
