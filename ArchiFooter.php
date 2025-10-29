@@ -9,6 +9,7 @@ use ApiMain;
 use Article;
 use DerivativeRequest;
 use Html;
+use MediaWiki\Api\ApiUsageException;
 use MediaWiki\MediaWikiServices;
 use MWException;
 use ParserOptions;
@@ -26,8 +27,7 @@ class ArchiFooter
      * @param Title $title
      * @return array
      */
-    private static function getProps(Skin $skin, Title $title)
-    {
+    private static function getProps(Skin $skin, Title $title): array {
         $params = new DerivativeRequest(
             $skin->getRequest(),
             [
@@ -76,6 +76,7 @@ class ArchiFooter
      * @param Skin $skin Current skin
      *
      * @return void
+     * @noinspection PhpRedundantCatchClauseInspection
      */
     public static function main(string &$return, Skin $skin)
     {
@@ -91,7 +92,12 @@ class ArchiFooter
             ).'</p>';
 
             //Nearby addresses
-            $props = self::getProps($skin, $title);
+            try {
+                $props = self::getProps($skin, $title);
+            } catch (ApiUsageException) {
+                // browsebysubject est moins robuste que d'autres appels.
+                $props = [];
+            }
             $return .= '<div class="noexcerpt">'.PHP_EOL;
             if (isset($props['street']) && isset($props['number']) && isset($props['city'])) {
                 $text = '<div style="float:left;">{{#ask:';
